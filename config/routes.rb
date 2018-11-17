@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :users
   get 'users/show'
+  post 'users/follow'
+  post 'users/unfollow'
 
   resources :posts
   get 'debug/index'

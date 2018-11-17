@@ -1,3 +1,15 @@
 <h1>Users#show</h1>
 <%= @user.email %>
+<% if !current_user.is_following @user.id%>
+    <%= button_to  "follow", {:controller => 'users', :action => 'follow', :user_id => current_user.id, :target_id => @user.id}, method: :post %> 
+<% else %>
+    <%= button_to  "unfollow", {:controller => 'users', :action => 'unfollow', :user_id => current_user.id, :target_id => @user.id}, method: :post %> 
+<% end %>
+
+<% @posts.each do |post| %>
+    <%= post.body %> | <%= post.created_at %> <br>
+    <%= post.author.email %> <br>
+    <br>
+<% end %>
+
 <p>Find me in app/views/users/show.html.erb</p>
