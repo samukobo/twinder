@@ -1,24 +1,15 @@
-# README
+# Twinder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Twinder is a dating and a social media web application.
 
-Things you may want to cover:
+Prerequisites
 
-* Ruby version
+* Ruby > 2.5
 
-* System dependencies
+* Rails > 5.1
 
-* Configuration
+## Installation
 
-* Database creation
+* Run `bundle install` to install dependencies.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Start the server with `rails -s`
