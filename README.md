@@ -1,8 +1,9 @@
 # Twinder
 
 Twinder is a dating and a social media web application.
+Users can match with other people of their interest and write short messages under their own feed.
 
-Prerequisites
+Prerequisites:
 
 * Ruby > 2.5
 
