@@ -14,4 +14,14 @@ class User < ApplicationRecord
       return false
     end
   end
+
+  def get_posts
+    active_following = Relationship.where(follower_id: self[:id])
+    ids = [self[:id]]
+    active_following.each do |relation|
+      ids.push relation.followed_id 
+    end
+    posts = Post.where user_id: ids
+    return posts.reverse
+  end
 end

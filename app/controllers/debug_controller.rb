@@ -1,5 +1,5 @@
 class DebugController < ApplicationController
   def index
-      @posts = Post.all
+      @posts = current_user.get_posts
   end
 end
