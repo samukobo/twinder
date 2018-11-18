@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'home/all'
+  post 'home/create_tweet'
+
+  root to: 'welcome#index'
+
+  get 'home/index'
+
   resources :users
   get 'users/show'
   post 'users/follow'

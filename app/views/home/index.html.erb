@@ -2,32 +2,29 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3">
-      <h2 class="name-cont"> <%=link_to @user.name, users_show_path(:user_id => @user.id) %> </h2>
-      <h5> @<%= @user.handle %> </h5>
-        <% if current_user.id != @user.id %>
-            <% if !current_user.is_following @user.id%>
-                <%= button_to  "Make Love", {:controller => 'users', :action => 'follow', :user_id => current_user.id, :target_id => @user.id}, method: :post, class: "btn btn-primary" %> 
-            <% else %>
-                <%= button_to  "Unlove", {:controller => 'users', :action => 'unfollow', :user_id => current_user.id, :target_id => @user.id}, method: :post, class: "btn btn-primary" %> 
-            <% end %>
-        <% end %>
+      <h2 class="name-cont"> <%=link_to current_user.name, users_show_path(:user_id => current_user.id) %> </h2>
+      <h5> @<%= current_user.handle %> </h5>
         <div class="row">
             <div class="col fol">
-                <span class="fol-num"> <%= @user.get_following %> </span> <br>
+                <span class="fol-num"> <%= current_user.get_following %> </span> <br>
                 <span class="fol-label"> Loving </span>
             </div>
             <div class="col fol">
-                <span class="fol-num"> <%= @user.get_followers %> </span> <br>
+                <span class="fol-num"> <%= current_user.get_followers %> </span> <br>
                 <span class="fol-label"> Lovers </span>
             </div>
         </div>
-        <% if current_user.id == @user.id %>
-            <br>
-            <%= link_to "Edit my account", edit_user_registration_path %> 
-        <% end %>
+      <hr>
+      <%= form_tag home_create_tweet_path, method: :post do %>
+        <%= hidden_field_tag(:targ_path, home_index_path) %>
+        <%= label_tag(:body, "Create a tween") %> <br>
+        <%= text_area_tag :body, "", class: "tween-inp-cont"%> <br>
+        <div class="float-right"> <%= submit_tag "Submit", class: "btn btn-primary" %> </div>
+    <% end %>
     </div>
     <div class="col-7">
     <% if @posts.any? %>
+        <h4> Need more tweets? <%= link_to "View tweets from everywhere.", home_all_path %> </h4> <hr>
         <% @posts.each do |post| %>
         <div class="tween-cont">
             <div class="tween-header">
@@ -44,7 +41,7 @@
         <% end %>
     <% else %>
         <p class="disabled-text">
-        There are no tweets available. 
+        There are no tweets available. How about <%= link_to "hooking up", home_all_path, method: :get %> with someone?
         </p>
     <% end %>
     </div>
