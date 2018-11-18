@@ -3,12 +3,29 @@
   <head>
     <title>Twinder</title>
     <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+  </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <div class="navbar-collapse collapse w-60 order-1 order-md-0 dual-collapse2">
+      <%= link_to  image_tag("twinder-font-transparent.png", :height => '50px'), root_path, method: :get, :class => "navbar-brand" %>
+      </div>
+
+      <div class="navbar my-2 my-lg-0">
+      <% if user_signed_in? %>
+        Currently signed in as <strong> <%= current_user.handle %> </strong>
+        <%= button_to "Sign Out", destroy_user_session_path, :method => "delete", :class => "btn btn-primary"  %>
+      <% else %>
+        <%= button_to "Sign In", user_session_path, :method => "get", :class => "btn btn-primary" %>
+      <% end %>
+      </div>
+
+    </nav>
     <%= yield %>
   </body>
 </html>

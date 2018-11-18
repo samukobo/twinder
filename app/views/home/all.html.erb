@@ -1,0 +1,52 @@
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <h2 class="name-cont"> <%=link_to current_user.name, users_show_path(:user_id => current_user.id) %> </h2>
+      <h5> @<%= current_user.handle %> </h5>
+        <div class="row">
+            <div class="col fol">
+                <span class="fol-num"> <%= current_user.get_following %> </span> <br>
+                <span class="fol-label"> Loving </span>
+            </div>
+            <div class="col fol">
+                <span class="fol-num"> <%= current_user.get_followers %> </span> <br>
+                <span class="fol-label"> Lovers </span>
+            </div>
+        </div>
+      <hr>
+      <%= form_tag home_create_tweet_path, method: :post do %>
+        <%= hidden_field_tag(:targ_path, home_all_path) %>
+        <%= label_tag(:body, "Create a tween") %> <br>
+        <%= text_area_tag :body, "", class: "tween-inp-cont"%> <br>
+        <div class="float-right"> <%= submit_tag "Submit", class: "btn btn-primary" %> </div>
+    <% end %>
+    </div>
+    <div class="col-7">
+    <% if @posts.any? %>
+        <h4> You are viewing tweets from everywhere. </h4> <hr>
+        <% @posts.each do |post| %>
+        <div class="tween-cont">
+            <div class="tween-header">
+            <span class="tween-name"> <%= link_to post.author.name, users_show_path(:user_id => post.author.id) %> </span>
+            <span class="tween-handle"> <%= '@' + post.author.handle %>
+            · <%= time_ago_in_words post.created_at %> </span>
+            </div>
+
+            <div class="tween-body">
+            <%= post.body %>
+            </div>
+        </div>
+        <hr>
+        <% end %>
+    <% else %>
+        <p class="disabled-text">
+        There are no tweets available. 
+        </p>
+    <% end %>
+    </div>
+    <div class="col-1">
+      One of three columns
+    </div>
+  </div>
+</div>

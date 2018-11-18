@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: 'Roboto';
+    background-color: #FD297B;
+}
+
+h5 {
+    color: grey;
+    font-weight: 100;
+}
+
+h4 a {
+    color: #FD297B;
+}
+
+.image-brand {
+    width: 350px;
+}
+
+.container-fill {
+    text-align: center;
+    width: 100%;
+    margin-top:200px;
+}
+
+.container-sm {
+    margin: 30px 300px;
+}
+
+.white-bg {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top:20px;
+}
+
+.fol-num {
+    color: black;
+    font-size: 36px;
+}
+
+.tween-inp-cont {
+    height: 100px;
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.tween-name a {
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.tween-handle {
+    font-size: 16px;
+    font-weight: 100;
+    color: grey;
+}
+
+.name-cont a {
+    color: black;
+}
+
+.disabled-text {
+    margin-top: 60px;
+    color: grey;
+    font-weight: 700;
+    text-align: center;
+}
+
+.disabled-text a {
+    color: #FD297B
+}
+
+.col-1 {
+    visibility: hidden;
+}
+
+.col {
+    border-radius: 10px;
+    background-color: white;
+}
+
+.col-7 {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.fol {
+    margin: 0px, 10px;
+    padding: 0px, 5px;
+}
+
+.col-3 {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    margin:20px;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #FD297B;
+    border-color: #FD297B;
+}
+
+.btn-primary:hover {
+    background-color: #FF5864;
+    border-color: #FF5864;
+}
+
+nav {
+    background-color: white;
+}
+
+.navbar strong {
+    margin: 7px;
+}

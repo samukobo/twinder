@@ -1,0 +1,55 @@
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <h2 class="name-cont"> <%=link_to @user.name, users_show_path(:user_id => @user.id) %> </h2>
+      <h5> @<%= @user.handle %> </h5>
+        <% if current_user.id != @user.id %>
+            <% if !current_user.is_following @user.id%>
+                <%= button_to  "Make Love", {:controller => 'users', :action => 'follow', :user_id => current_user.id, :target_id => @user.id}, method: :post, class: "btn btn-primary" %> 
+            <% else %>
+                <%= button_to  "Unlove", {:controller => 'users', :action => 'unfollow', :user_id => current_user.id, :target_id => @user.id}, method: :post, class: "btn btn-primary" %> 
+            <% end %>
+        <% end %>
+        <div class="row">
+            <div class="col fol">
+                <span class="fol-num"> <%= @user.get_following %> </span> <br>
+                <span class="fol-label"> Loving </span>
+            </div>
+            <div class="col fol">
+                <span class="fol-num"> <%= @user.get_followers %> </span> <br>
+                <span class="fol-label"> Lovers </span>
+            </div>
+        </div>
+        <% if current_user.id == @user.id %>
+            <br>
+            <%= link_to "Edit my account", edit_user_registration_path %> 
+        <% end %>
+    </div>
+    <div class="col-7">
+    <% if @posts.any? %>
+        <% @posts.each do |post| %>
+        <div class="tween-cont">
+            <div class="tween-header">
+            <span class="tween-name"> <%= link_to post.author.name, users_show_path(:user_id => post.author.id) %> </span>
+            <span class="tween-handle"> <%= '@' + post.author.handle %>
+            · <%= time_ago_in_words post.created_at %> </span>
+            </div>
+
+            <div class="tween-body">
+            <%= post.body %>
+            </div>
+        </div>
+        <hr>
+        <% end %>
+    <% else %>
+        <p class="disabled-text">
+        There are no tweets available. 
+        </p>
+    <% end %>
+    </div>
+    <div class="col-1">
+      One of three columns
+    </div>
+  </div>
+</div>
